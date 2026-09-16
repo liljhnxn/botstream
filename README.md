@@ -132,7 +132,7 @@ This isolates creator funds, eliminates systemic pool risks, prevents reentrancy
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone <repository-url>
+git clone https://github.com/liljhnxn/botstream.git
 cd botstream
 npm install --legacy-peer-deps
 ```
