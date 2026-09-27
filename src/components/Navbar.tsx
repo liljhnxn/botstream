@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { WalletButton } from "./WalletButton";
-import { Zap, Compass, PlusCircle, UserCheck, ShieldCheck, Activity, Menu, X } from "lucide-react";
+import { Zap, Compass, PlusCircle, UserCheck, ShieldCheck, Activity, Menu, X, CheckCircle, ExternalLink } from "lucide-react";
+import { BOTSTREAM_CONTRACT_ADDRESS } from "@/config/contracts";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -72,11 +73,23 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right Area: Network Badge & Wallet */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Right Area: Explorer Link, Network Badge & Wallet */}
+          <div className="hidden sm:flex items-center gap-2.5">
+            <a
+              href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-xs font-mono text-emerald-300 hover:bg-emerald-900/60 transition-colors shadow-sm shadow-emerald-500/10"
+              title="View Verified Contract on BotChain Explorer"
+            >
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Explorer: {BOTSTREAM_CONTRACT_ADDRESS.slice(0, 6)}...{BOTSTREAM_CONTRACT_ADDRESS.slice(-4)}</span>
+              <ExternalLink className="w-3 h-3 text-emerald-400 opacity-80 shrink-0" />
+            </a>
+
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700/60 text-xs font-mono text-slate-300">
               <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span>BotChain Mainnet (677)</span>
+              <span>Mainnet (677)</span>
             </div>
             <WalletButton />
           </div>
@@ -97,6 +110,19 @@ export function Navbar() {
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="sm:hidden glass-dropdown border-b border-white/10 px-4 pt-2 pb-6 space-y-2 animate-in slide-in-from-top duration-200">
+          <a
+            href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between px-3 py-2 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-xs font-mono text-emerald-300 mb-2"
+          >
+            <span className="flex items-center gap-2">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Mainnet Explorer Contract</span>
+            </span>
+            <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
+          </a>
+
           <div className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-slate-300 mb-3">
             <div className="w-2 h-2 rounded-full bg-cyan-400" />
             <span>BotChain Mainnet (Chain ID 677)</span>

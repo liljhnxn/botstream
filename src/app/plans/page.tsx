@@ -7,7 +7,7 @@ import { BOTSTREAM_CONTRACT_ADDRESS, BOTSTREAM_ABI } from "@/config/contracts";
 import { Plan } from "@/types";
 import { PlanCard } from "@/components/PlanCard";
 import { TransactionModal, TxStep } from "@/components/TransactionModal";
-import { Search, Filter, PlusCircle, Compass, RefreshCw } from "lucide-react";
+import { Search, Filter, PlusCircle, Compass, RefreshCw, ExternalLink, CheckCircle } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 
 export default function ExplorePlansPage() {
@@ -153,7 +153,20 @@ export default function ExplorePlansPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-xs font-mono text-emerald-300 hover:bg-emerald-900/60 transition-colors"
+            title="View Verified Contract on BotChain Explorer"
+          >
+            <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden sm:inline">Contract:</span>
+            <span>{BOTSTREAM_CONTRACT_ADDRESS.slice(0, 6)}...{BOTSTREAM_CONTRACT_ADDRESS.slice(-4)}</span>
+            <ExternalLink className="w-3 h-3 text-emerald-400" />
+          </a>
+
           <button
             onClick={() => {
               refetchCount();

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { Zap, ExternalLink, Shield, Code2, Globe } from "lucide-react";
+import { Zap, ExternalLink, Shield, Code2, Globe, CheckCircle } from "lucide-react";
+import { BOTSTREAM_CONTRACT_ADDRESS } from "@/config/contracts";
 
 export function Footer() {
   return (
@@ -70,6 +71,19 @@ export function Footer() {
                   className="flex items-center gap-1 hover:text-cyan-400 transition-colors"
                 >
                   <span>BotChain Explorer</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-mono transition-colors"
+                  title="View Verified BotStream Contract"
+                >
+                  <CheckCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                  <span>Contract: {BOTSTREAM_CONTRACT_ADDRESS.slice(0, 6)}...{BOTSTREAM_CONTRACT_ADDRESS.slice(-4)}</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
