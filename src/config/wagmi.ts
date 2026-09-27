@@ -1,12 +1,12 @@
 import { http, createConfig } from "wagmi";
 import { injected } from "wagmi/connectors";
-import { botchainTestnet } from "./chains";
+import { botchain } from "./chains";
 
 export const config = createConfig({
-  chains: [botchainTestnet],
+  chains: [botchain],
   connectors: [injected()],
   transports: {
-    [botchainTestnet.id]: http("https://rpc.bohr.life"),
+    [botchain.id]: http(process.env.NEXT_PUBLIC_BOTCHAIN_RPC_URL || "https://rpc.botchain.ai"),
   },
   ssr: true,
 });

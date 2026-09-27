@@ -1,17 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-
 /**
  * @title BotStream — On-Chain Recurring Subscription Protocol
  * @notice Allows creators to establish decentralized recurring subscription tiers in native BOT,
  *         and subscribers to initiate, track, manually renew when due, and cancel subscriptions.
- * @dev Implements secure checks-effects-interactions accounting with ReentrancyGuard.
+ * @dev Implements secure checks-effects-interactions accounting with nonReentrant guard.
  *      Native BOT cannot be automatically pulled from user wallets without a transaction,
  *      so subscriptions are funded upfront and manually renewed when due.
  */
-contract BotStream is ReentrancyGuard {
+contract BotStream {
+
+    uint256 private _status = 1;
+
+    modifier nonReentrant() {
+        require(_status == 1, "REENTRANT");
+        _status = 2;
+        _;
+        _status = 1;
+    }
 
     // ==========================================
     // DATA STRUCTURES
@@ -151,8 +158,8 @@ contract BotStream is ReentrancyGuard {
         uint256 interval,
         string calldata metadataURI
     ) external returns (uint256 planId) {
-        require(price > 0, "Price must be greater than zero");
-        require(interval > 0, "Interval must be greater than zero");
+        require(price > 0, "Invalid price");
+        require(interval > 0, "Invalid interval");
 
         planId = nextPlanId++;
 
@@ -178,9 +185,9 @@ contract BotStream is ReentrancyGuard {
      * @param active New active state
      */
     function setPlanStatus(uint256 planId, bool active) external {
-        require(planId > 0 && planId < nextPlanId, "Plan does not exist");
+        require(planId > 0 && planId < nextPlanId, "No plan");
         Plan storage plan = plans[planId];
-        require(plan.creator == msg.sender, "Only plan creator can change status");
+        require(plan.creator == msg.sender, "Not creator");
 
         plan.active = active;
 
@@ -193,14 +200,14 @@ contract BotStream is ReentrancyGuard {
      */
     function withdrawEarnings() external nonReentrant {
         uint256 amount = pendingEarnings[msg.sender];
-        require(amount > 0, "No pending earnings to withdraw");
+        require(amount > 0, "No earnings");
 
         // Effects
         pendingEarnings[msg.sender] = 0;
 
         // Interactions
         (bool success, ) = payable(msg.sender).call{value: amount}("");
-        require(success, "Native BOT transfer failed");
+        require(success, "Transfer failed");
 
         emit EarningsWithdrawn(msg.sender, amount);
     }
@@ -215,10 +222,10 @@ contract BotStream is ReentrancyGuard {
      * @return subscriptionId The newly created subscription ID
      */
     function subscribe(uint256 planId) external payable nonReentrant returns (uint256 subscriptionId) {
-        require(planId > 0 && planId < nextPlanId, "Plan does not exist");
+        require(planId > 0 && planId < nextPlanId, "No plan");
         Plan storage plan = plans[planId];
-        require(plan.active, "Plan is currently inactive");
-        require(msg.value == plan.price, "Incorrect payment amount");
+        require(plan.active, "Plan inactive");
+        require(msg.value == plan.price, "Wrong payment");
 
         subscriptionId = nextSubscriptionId++;
         uint256 nextPayment = block.timestamp + plan.interval;
@@ -254,15 +261,15 @@ contract BotStream is ReentrancyGuard {
      * @param subscriptionId The ID of the subscription to renew
      */
     function renewSubscription(uint256 subscriptionId) external payable nonReentrant {
-        require(subscriptionId > 0 && subscriptionId < nextSubscriptionId, "Subscription does not exist");
+        require(subscriptionId > 0 && subscriptionId < nextSubscriptionId, "No sub");
         Subscription storage sub = subscriptions[subscriptionId];
 
-        require(sub.active, "Subscription is canceled");
-        require(msg.sender == sub.subscriber, "Only subscriber can renew");
-        require(block.timestamp >= sub.nextPaymentTime, "Payment is not due yet");
+        require(sub.active, "Sub canceled");
+        require(msg.sender == sub.subscriber, "Not subscriber");
+        require(block.timestamp >= sub.nextPaymentTime, "Not due");
 
         Plan storage plan = plans[sub.planId];
-        require(msg.value == plan.price, "Incorrect payment amount");
+        require(msg.value == plan.price, "Wrong payment");
 
         sub.paymentsMade += 1;
         sub.nextPaymentTime = block.timestamp + plan.interval;
@@ -283,11 +290,11 @@ contract BotStream is ReentrancyGuard {
      * @param subscriptionId The ID of the subscription to cancel
      */
     function cancelSubscription(uint256 subscriptionId) external {
-        require(subscriptionId > 0 && subscriptionId < nextSubscriptionId, "Subscription does not exist");
+        require(subscriptionId > 0 && subscriptionId < nextSubscriptionId, "No sub");
         Subscription storage sub = subscriptions[subscriptionId];
 
-        require(msg.sender == sub.subscriber, "Only subscriber can cancel");
-        require(sub.active, "Subscription is already inactive");
+        require(msg.sender == sub.subscriber, "Not subscriber");
+        require(sub.active, "Already inactive");
 
         sub.active = false;
 

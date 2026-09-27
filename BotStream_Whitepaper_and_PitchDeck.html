@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BotStream — Whitepaper & Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --border: #1f293d;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --code-bg: #030712;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .action-bar {
+      position: sticky;
+      top: 1rem;
+      z-index: 50;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .action-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn:hover {
+      background: #334155;
+      border-color: #475569;
+    }
+
+    .btn-primary {
+      background: #0284c7;
+      border-color: #38bdf8;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    h1, h2, h3, h4 {
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: #d1d5db;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.25rem;
+      color: #d1d5db;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    .meta-box {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      margin-bottom: 0.5rem;
+      gap: 0.75rem;
+    }
+
+    .meta-label {
+      color: var(--text-muted);
+      min-width: 140px;
+      font-weight: 500;
+    }
+
+    .meta-value {
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      word-break: break-all;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.8);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+    }
+
+    .slide {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      page-break-inside: avoid;
+    }
+
+    .slide-number {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+      h1, h2, h3, h4, strong {
+        color: #000 !important;
+        -webkit-text-fill-color: initial !important;
+      }
+      p, ul, ol, li {
+        color: #222 !important;
+      }
+      .slide {
+        background: #fafafa !important;
+        border: 1px solid #ccc !important;
+        page-break-after: always;
+      }
+      th {
+        background: #eee !important;
+        color: #000 !important;
+      }
+      td, th {
+        border-color: #ddd !important;
+      }
+      pre {
+        background: #f4f4f4 !important;
+        color: #111 !important;
+        border: 1px solid #ccc !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Sticky Action Bar -->
+  <div class="action-bar">
+    <div class="action-title">
+      <span>⚡</span> BotStream Documentation
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Save as PDF / Print</button>
+      <a class="btn" href="https://github.com/liljhnxn/botstream" target="_blank">GitHub Repo</a>
+    </div>
+  </div>
+
+  <!-- WHITEPAPER SECTION -->
+  <div class="card">
+    <span class="badge">TECHNICAL WHITEPAPER</span>
+    <h1>BotStream Protocol</h1>
+    <p><strong>The Non-Custodial Recurring Subscription Protocol on EVM</strong></p>
+
+    <div class="meta-box">
+      <div class="meta-item">
+        <span class="meta-label">Target Network:</span>
+        <span class="meta-value">BotChain Mainnet (Chain ID: 677)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Contract Address:</span>
+        <span class="meta-value">0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Explorer Status:</span>
+        <span class="meta-value"><a href="https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code" target="_blank" style="color:var(--accent);">Verified on BotChain Explorer</a></span>
+      </div>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>
+      Centralized subscription gateways (Stripe, PayPal) extract 3% to 10% in processing fees, impose strict regional censorship, and reserve unilateral authority to freeze merchant earnings. In Web3, subscriptions have failed due to the native currency constraint: native gas tokens (such as ETH or BOT) cannot be debited from user wallets without a cryptographic signature. Existing solutions either force users into high-risk custodial pooled escrows or demand unlimited token allowances prone to wallet-drain exploits.
+    </p>
+    <p>
+      <strong>BotStream</strong> introduces an honest, non-custodial recurring subscription protocol. It allows creators and decentralized SaaS platforms to set custom subscription tiers denominated in native BOT tokens. Subscribers retain full custody of their assets, pay on a deterministic schedule, and perform one-click renewals without counterparty risk.
+    </p>
+
+    <h2>2. Problem Statement</h2>
+    <h3>2.1 Centralized Payment Gateway Monopolies</h3>
+    <ul>
+      <li><strong>High Take Rates:</strong> 2.9% + $0.30 standard base fees plus foreign exchange surcharges.</li>
+      <li><strong>Censorship Vulnerability:</strong> Web3 tools, DAOs, and anonymous creators are routinely unbanked or de-platformed.</li>
+      <li><strong>Privacy Intrusion:</strong> Mandatory credit card and identity collection for digital memberships.</li>
+    </ul>
+
+    <h3>2.2 The Web3 Recurring Dilemma</h3>
+    <ul>
+      <li><strong>Approval Exploit Hazards:</strong> Unlimited ERC-20 allowances create constant security vulnerabilities.</li>
+      <li><strong>Custodial Lockups:</strong> Forcing users to deposit multi-month funds into protocols creates smart-contract systemic risk.</li>
+    </ul>
+
+    <h2>3. The BotStream Architecture</h2>
+    <ul>
+      <li><strong>Native BOT Settlement:</strong> Payments route directly in native network currency without token approvals or wrapping.</li>
+      <li><strong>Deterministic Lifecycle Clock:</strong> Tracks <code>startedAt</code>, <code>interval</code>, and <code>nextPaymentTime</code> on-chain.</li>
+      <li><strong>Fair Grace Period:</strong> Overdue renewals start their fresh cycle from <code>block.timestamp + interval</code>, preventing penalties for missed periods.</li>
+      <li><strong>Reentrancy-Guarded Creator Escrow:</strong> Creator earnings collect in isolated accounting balances, withdrawable anytime with zero middleman holding.</li>
+    </ul>
+
+    <pre>
+ [Subscriber]                          [BotStream.sol]                       [Creator]
+      |                                       |                                  |
+      |--- subscribe(planId) + [BOT Fee] ---->|                                  |
+      |                                       |--- credit pendingEarnings ------>|
+      |                                       |                                  |
+      |   (Interval passes...)                |                                  |
+      |                                       |                                  |
+      |--- renewSubscription(subId) --------->|                                  |
+      |                                       |--- credit pendingEarnings ------>|
+      |                                       |                                  |
+      |                                       |<-- withdrawEarnings() -----------|
+      |                                       |---- transfer accrued BOT ------->|
+    </pre>
+
+    <h2>4. Subscription State Machine</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Condition</th>
+          <th>Permissions & Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ACTIVE</strong></td>
+          <td><code>block.timestamp &lt; nextPaymentTime</code></td>
+          <td>Full subscriber access granted.</td>
+        </tr>
+        <tr>
+          <td><strong>PAYMENT_DUE</strong></td>
+          <td><code>block.timestamp &gt;= nextPaymentTime</code></td>
+          <td>Cycle lapsed; one-click renewal enabled.</td>
+        </tr>
+        <tr>
+          <td><strong>CANCELED</strong></td>
+          <td>Explicit user cancellation</td>
+          <td>No future billing; active until cycle concludes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PITCH DECK SECTION -->
+  <div class="card">
+    <span class="badge">PITCH DECK</span>
+    <h1>BotStream Pitch Deck</h1>
+    <p><strong>The On-Chain Subscription Engine for Web3 Creators & SaaS</strong></p>
+
+    <!-- Slide 1 -->
+    <div class="slide">
+      <div class="slide-number">SLIDE 01 // TITLE</div>
+      <h3>BotStream</h3>
+      <p style="font-size: 1.1rem; color: #fff;"><strong>Subscribe. Renew. On-Chain.</strong></p>
+      <p>Decentralized, non-custodial recurring subscription infrastructure on EVM.</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="slide-number">SLIDE 02 // THE PROBLEM</div>
+      <h3>Web3 Monetization is Broken</h3>
+      <ul>
+        <li><strong>Centralized Gatekeepers:</strong> Traditional platforms extract 3%–10% in fees and freeze merchant funds arbitrarily.</li>
+        <li><strong>Unpredictable Tips:</strong> One-off crypto donations cannot sustain long-term developer and creator teams.</li>
+        <li><strong>Approval Drain Risk:</strong> Existing Web3 billing attempts require unlimited ERC-20 approvals that endanger wallet balances.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="slide-number">SLIDE 03 // THE SOLUTION</div>
+      <h3>Honest, Non-Custodial Recurring Billing</h3>
+      <ul>
+        <li><strong>Native BOT Currency:</strong> Direct native asset payments with no token wrapping.</li>
+        <li><strong>Self-Custodial:</strong> Users only pay for the active period; no fund lockups.</li>
+        <li><strong>Deterministic Timestamps:</strong> Clean on-chain status tracking (Active, Due, Canceled).</li>
+        <li><strong>1-Click Renewals:</strong> Instant renewal with fair grace period logic.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <div class="slide-number">SLIDE 04 // COMPETITIVE COMPARISON</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Stripe / Web2</th>
+            <th>Traditional Web3 Escrows</th>
+            <th>BotStream</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Custody</strong></td>
+            <td>Centralized Bank</td>
+            <td>Protocol Escrow Pool</td>
+            <td><strong>100% Self-Custodial</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Platform Fees</strong></td>
+            <td>3% – 10%</td>
+            <td>2% – 5%</td>
+            <td><strong>0% Platform Fee</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Censorship</strong></td>
+            <td>High</td>
+            <td>Medium</td>
+            <td><strong>Zero (Smart Contract)</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Approval Risk</strong></td>
+            <td>None</td>
+            <td>High (Unlimited Allowances)</td>
+            <td><strong>None (Native BOT)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <div class="slide-number">SLIDE 05 // TRACTION & LIVE STATUS</div>
+      <h3>Live on BotChain Mainnet</h3>
+      <ul>
+        <li><strong>Verified Smart Contract:</strong> <code>0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac</code></li>
+        <li><strong>Full-Stack Application:</strong> Next.js 14, Wagmi v2, Viem, and Tailwind CSS.</li>
+        <li><strong>Working Modules:</strong> Plan Creator, Tier Discovery Marketplace, Subscriber Dashboard, Real-Time Explorer.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+      <div class="slide-number">SLIDE 06 // ROADMAP</div>
+      <h3>Forward Roadmap</h3>
+      <ul>
+        <li><strong>Q3 2026:</strong> EIP-712 session keys for opt-in automated batch renewals.</li>
+        <li><strong>Q4 2026:</strong> Token-gated SDK & Webhooks for Discord/Telegram community gating.</li>
+        <li><strong>Q1 2027:</strong> Multi-chain deployment across EVM L2 ecosystems.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

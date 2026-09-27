@@ -146,7 +146,7 @@ export default function ActivityPage() {
           <Activity className="w-10 h-10 text-cyan-400 mx-auto mb-3 opacity-60" />
           <h3 className="text-base font-bold text-white mb-1">No Recent Protocol Events</h3>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Events will automatically appear here whenever plans are created, subscriptions are initiated, or renewals take place on Botchain Testnet.
+            Events will automatically appear here whenever plans are created, subscriptions are initiated, or renewals take place on BotChain Mainnet.
           </p>
         </div>
       ) : (
@@ -184,13 +184,13 @@ export default function ActivityPage() {
                   )}
 
                   <a
-                    href={`https://scan.bohr.life/tx/${log.txHash}`}
+                    href={`https://scan.botchain.ai/tx/${log.txHash}`}
                     target="_blank"
                     rel="noreferrer"
                     className="p-2 rounded-xl text-slate-400 hover:text-cyan-400 hover:bg-white/5 transition-colors flex items-center gap-1 text-xs"
-                    title="View Transaction on BohrScan"
+                    title="View Transaction on BotChain Explorer"
                   >
-                    <span className="hidden md:inline">BohrScan</span>
+                    <span className="hidden md:inline">BotChain Explorer</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>

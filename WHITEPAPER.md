@@ -2,8 +2,8 @@
 **The Non-Custodial Recurring Subscription Protocol on EVM**
 
 *Author*: BotStream Core Contributors  
-*Target Network*: Botchain / Bohr Testnet (Chain ID 968)  
-*Contract Address*: [`0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b`](https://scan.bohr.life/address/0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b#code)  
+*Target Network*: BotChain Mainnet (Chain ID 677)  
+*Contract Address*: [`0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac`](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code)  
 *Repository*: [https://github.com/liljhnxn/botstream](https://github.com/liljhnxn/botstream)  
 *Live Specification*: [https://github.com/liljhnxn/botstream/blob/main/WHITEPAPER.md](https://github.com/liljhnxn/botstream/blob/main/WHITEPAPER.md)
 
@@ -128,6 +128,6 @@ Subscriptions transition across four deterministic states:
 
 ## 7. Roadmap
 
-* **Phase 1 (Completed)**: Core contracts deployed & verified on BohrScan Testnet; full dApp dashboard, plan creator, and live activity stream.
+* **Phase 1 (Completed)**: Core contracts deployed & verified on BotChain Mainnet; full dApp dashboard, plan creator, and live activity stream.
 * **Phase 2**: EIP-712 Meta-transactions & Account Abstraction (ERC-4337) session keys for optional automated batch renewals.
 * **Phase 3**: Dynamic tier NFTs representing transferable subscription access passes.

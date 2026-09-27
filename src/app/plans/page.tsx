@@ -149,7 +149,7 @@ export default function ExplorePlansPage() {
             <h1 className="text-2xl sm:text-3xl font-black text-white">Explore Subscription Plans</h1>
           </div>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Browse on-chain subscription tiers deployed directly to Botchain Testnet.
+            Browse on-chain subscription tiers deployed directly to BotChain Mainnet.
           </p>
         </div>
 
@@ -222,7 +222,7 @@ export default function ExplorePlansPage() {
           </h3>
           <p className="text-xs text-slate-400 mb-6 leading-relaxed">
             {planCount === 0
-              ? "Be the first creator to launch an on-chain recurring subscription tier on Botchain Testnet!"
+              ? "Be the first creator to launch an on-chain recurring subscription tier on BotChain Mainnet!"
               : "Try adjusting your search criteria or toggling active plan filters."}
           </p>
           <Link

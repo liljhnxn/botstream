@@ -24,10 +24,12 @@ async function main() {
   await botStream.waitForDeployment();
   const contractAddress = await botStream.getAddress();
 
+  const explorerUrl = `https://scan.botchain.ai/address/${contractAddress}`;
+
   console.log("\n Contract Deployed Successfully!");
   console.log(`Contract Address: ${contractAddress}`);
   console.log(`Chain ID:         ${network.chainId}`);
-  console.log(`Explorer URL:     https://scan.bohr.life/address/${contractAddress}`);
+  console.log(`Explorer URL:     ${explorerUrl}`);
   console.log("==========================================");
 
   // Export ABI & Address to Frontend Config

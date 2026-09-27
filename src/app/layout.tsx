@@ -11,10 +11,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "BotStream — On-Chain Subscription Protocol on Botchain",
+  title: "BotStream — On-Chain Subscription Protocol on BotChain Mainnet",
   description:
-    "Decentralized recurring subscriptions powered by Botchain Testnet. Subscribe, manage billing cycles, and renew on-chain with native BOT.",
-  keywords: ["BotStream", "Botchain", "Bohr", "Web3 Subscriptions", "Decentralized recurring payments", "BOT token"],
+    "Decentralized recurring subscriptions powered by BotChain Mainnet. Subscribe, manage billing cycles, and renew on-chain with native BOT.",
+  keywords: ["BotStream", "Botchain", "BotChain Mainnet", "Web3 Subscriptions", "Decentralized recurring payments", "BOT token"],
   icons: {
     icon: "/favicon.svg",
   },

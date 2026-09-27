@@ -16,12 +16,12 @@ export function Footer() {
               <span className="font-bold text-lg text-white">BotStream</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Decentralized recurring subscription protocol powered by Botchain Testnet. Built for creators and Web3 services.
+              Decentralized recurring subscription protocol powered by BotChain Mainnet. Built for creators and Web3 services.
             </p>
             <div className="pt-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 text-[11px] font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                Chain ID: 968 (Botchain)
+                Chain ID: 677 (BotChain Mainnet)
               </span>
             </div>
           </div>
@@ -64,23 +64,23 @@ export function Footer() {
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <a
-                  href="https://scan.bohr.life"
+                  href="https://scan.botchain.ai"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-1 hover:text-cyan-400 transition-colors"
                 >
-                  <span>BohrScan Explorer</span>
+                  <span>BotChain Explorer</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
               <li>
                 <a
-                  href="https://rpc.bohr.life"
+                  href="https://rpc.botchain.ai"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-1 hover:text-cyan-400 transition-colors"
                 >
-                  <span>Botchain RPC Endpoint</span>
+                  <span>BotChain Mainnet RPC</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -104,7 +104,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 BotStream Protocol. Production MVP on Botchain Testnet.</p>
+          <p>© 2026 BotStream Protocol. Production on BotChain Mainnet.</p>
           <div className="flex items-center gap-4">
             <span className="font-mono text-[11px] text-slate-400">Solidity ^0.8.24 • Wagmi v2 • Viem</span>
           </div>

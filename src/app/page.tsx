@@ -94,7 +94,7 @@ export default function LandingPage() {
 
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-8 backdrop-blur-md shadow-lg shadow-cyan-500/10">
           <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Decentralized Subscriptions Powered by Botchain Testnet</span>
+          <span>Decentralized Subscriptions Powered by BotChain Mainnet</span>
         </div>
 
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
@@ -147,7 +147,7 @@ export default function LandingPage() {
           </div>
           <div className="glass-panel p-4 rounded-2xl">
             <span className="text-xs text-slate-400 font-medium block">Chain ID</span>
-            <span className="text-2xl sm:text-3xl font-black text-white font-mono">968 (Botchain)</span>
+            <span className="text-2xl sm:text-3xl font-black text-white font-mono">677 (Mainnet)</span>
           </div>
           <div className="glass-panel p-4 rounded-2xl">
             <span className="text-xs text-slate-400 font-medium block">Settlement Model</span>
@@ -279,24 +279,24 @@ export default function LandingPage() {
       <section className="glass-panel rounded-3xl p-8 sm:p-10 border border-white/10 text-center relative overflow-hidden">
         <div className="max-w-2xl mx-auto space-y-4">
           <span className="text-xs uppercase font-bold tracking-widest text-cyan-400">Infrastructure</span>
-          <h2 className="text-2xl sm:text-3xl font-black text-white">Botchain Testnet Native</h2>
+          <h2 className="text-2xl sm:text-3xl font-black text-white">BotChain Mainnet Native</h2>
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            BotStream is built on Bohr / Botchain Testnet (Chain ID 968) using EVM Solidity ^0.8.24 and OpenZeppelin security contracts.
+            BotStream is built on BotChain Mainnet (Chain ID 677) using EVM Solidity ^0.8.24.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <span className="px-3 py-1.5 rounded-lg bg-slate-900 text-xs font-mono text-cyan-300 border border-slate-700">
-              RPC: https://rpc.bohr.life
+              RPC: https://rpc.botchain.ai
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-slate-900 text-xs font-mono text-cyan-300 border border-slate-700">
-              Chain ID: 968
+              Chain ID: 677
             </span>
             <a
-              href="https://scan.bohr.life"
+              href="https://scan.botchain.ai"
               target="_blank"
               rel="noreferrer"
               className="px-3 py-1.5 rounded-lg bg-cyan-950 text-xs font-mono text-cyan-400 hover:text-cyan-300 border border-cyan-800 transition-colors"
             >
-              Explorer: scan.bohr.life
+              Explorer: scan.botchain.ai
             </a>
           </div>
         </div>

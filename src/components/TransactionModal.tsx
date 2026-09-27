@@ -71,8 +71,8 @@ export function TransactionModal({
           {/* Subtext description */}
           <p className="text-sm text-slate-300 max-w-xs mb-4">
             {step === "wallet-confirm" && "Please review and confirm the transaction in your wallet."}
-            {step === "pending" && "Transaction submitted to Botchain Testnet. Waiting for block confirmation..."}
-            {step === "success" && "Transaction successfully confirmed on Botchain!"}
+            {step === "pending" && "Transaction submitted to BotChain Mainnet. Waiting for block confirmation..."}
+            {step === "success" && "Transaction successfully confirmed on BotChain Mainnet!"}
             {step === "error" && (errorMessage || "The transaction was rejected or encountered an on-chain error.")}
           </p>
 
@@ -83,12 +83,12 @@ export function TransactionModal({
               <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-mono text-cyan-300 truncate">{txHash}</span>
                 <a
-                  href={`https://scan.bohr.life/tx/${txHash}`}
+                  href={`https://scan.botchain.ai/tx/${txHash}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 shrink-0 underline"
                 >
-                  <span>BohrScan</span>
+                  <span>BotChain Explorer</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>

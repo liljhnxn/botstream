@@ -1,231 +1,646 @@
-export const BOTSTREAM_CONTRACT_ADDRESS: `0x${string}` =
-  (process.env.NEXT_PUBLIC_BOTSTREAM_CONTRACT_ADDRESS as `0x${string}`) ||
-  "0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b";
+// Auto-generated configuration by scripts/deploy.ts
+export const BOTSTREAM_CONTRACT_ADDRESS = "0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac" as `0x${string}`;
 
 export const BOTSTREAM_ABI = [
   {
-    type: "function",
-    name: "createPlan",
-    inputs: [
-      { name: "price", type: "uint256", internalType: "uint256" },
-      { name: "interval", type: "uint256", internalType: "uint256" },
-      { name: "metadataURI", type: "string", internalType: "string" },
-    ],
-    outputs: [{ name: "planId", type: "uint256", internalType: "uint256" }],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "setPlanStatus",
-    inputs: [
-      { name: "planId", type: "uint256", internalType: "uint256" },
-      { name: "active", type: "bool", internalType: "bool" },
-    ],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "subscribe",
-    inputs: [{ name: "planId", type: "uint256", internalType: "uint256" }],
-    outputs: [{ name: "subscriptionId", type: "uint256", internalType: "uint256" }],
-    stateMutability: "payable",
-  },
-  {
-    type: "function",
-    name: "renewSubscription",
-    inputs: [{ name: "subscriptionId", type: "uint256", internalType: "uint256" }],
-    outputs: [],
-    stateMutability: "payable",
-  },
-  {
-    type: "function",
-    name: "cancelSubscription",
-    inputs: [{ name: "subscriptionId", type: "uint256", internalType: "uint256" }],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "withdrawEarnings",
-    inputs: [],
-    outputs: [],
-    stateMutability: "nonpayable",
-  },
-  {
-    type: "function",
-    name: "getPlan",
-    inputs: [{ name: "planId", type: "uint256", internalType: "uint256" }],
-    outputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        name: "",
-        type: "tuple",
-        internalType: "struct BotStream.Plan",
-        components: [
-          { name: "id", type: "uint256", internalType: "uint256" },
-          { name: "creator", type: "address", internalType: "address" },
-          { name: "price", type: "uint256", internalType: "uint256" },
-          { name: "interval", type: "uint256", internalType: "uint256" },
-          { name: "active", type: "bool", internalType: "bool" },
-          { name: "metadataURI", type: "string", internalType: "string" },
-          { name: "createdAt", type: "uint256", internalType: "uint256" },
-        ],
+        "indexed": true,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
       },
-    ],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getSubscription",
-    inputs: [{ name: "subscriptionId", type: "uint256", internalType: "uint256" }],
-    outputs: [
       {
-        name: "",
-        type: "tuple",
-        internalType: "struct BotStream.Subscription",
-        components: [
-          { name: "id", type: "uint256", internalType: "uint256" },
-          { name: "planId", type: "uint256", internalType: "uint256" },
-          { name: "subscriber", type: "address", internalType: "address" },
-          { name: "amount", type: "uint256", internalType: "uint256" },
-          { name: "startedAt", type: "uint256", internalType: "uint256" },
-          { name: "nextPaymentTime", type: "uint256", internalType: "uint256" },
-          { name: "paymentsMade", type: "uint256", internalType: "uint256" },
-          { name: "active", type: "bool", internalType: "bool" },
-        ],
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "EarningsWithdrawn",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
       },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "interval",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      }
     ],
-    stateMutability: "view",
+    "name": "PlanCreated",
+    "type": "event"
   },
   {
-    type: "function",
-    name: "getPlanCount",
-    inputs: [],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getSubscriptionCount",
-    inputs: [],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getSubscriberSubscriptions",
-    inputs: [{ name: "subscriber", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "uint256[]", internalType: "uint256[]" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getCreatorPlans",
-    inputs: [{ name: "creator", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "uint256[]", internalType: "uint256[]" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getCreatorEarnings",
-    inputs: [{ name: "creator", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "isSubscriptionDue",
-    inputs: [{ name: "subscriptionId", type: "uint256", internalType: "uint256" }],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "getSubscriptionStatus",
-    inputs: [{ name: "subscriptionId", type: "uint256", internalType: "uint256" }],
-    outputs: [{ name: "", type: "uint8", internalType: "enum BotStream.SubscriptionStatus" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "pendingEarnings",
-    inputs: [{ name: "", type: "address", internalType: "address" }],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "nextPlanId",
-    inputs: [],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "function",
-    name: "nextSubscriptionId",
-    inputs: [],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view",
-  },
-  {
-    type: "event",
-    name: "PlanCreated",
-    inputs: [
-      { name: "planId", type: "uint256", indexed: true },
-      { name: "creator", type: "address", indexed: true },
-      { name: "price", type: "uint256", indexed: false },
-      { name: "interval", type: "uint256", indexed: false },
-      { name: "metadataURI", type: "string", indexed: false },
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      }
     ],
-    anonymous: false,
+    "name": "PlanStatusChanged",
+    "type": "event"
   },
   {
-    type: "event",
-    name: "PlanStatusChanged",
-    inputs: [
-      { name: "planId", type: "uint256", indexed: true },
-      { name: "active", type: "bool", indexed: false },
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      }
     ],
-    anonymous: false,
+    "name": "SubscriptionCanceled",
+    "type": "event"
   },
   {
-    type: "event",
-    name: "SubscriptionCreated",
-    inputs: [
-      { name: "subscriptionId", type: "uint256", indexed: true },
-      { name: "planId", type: "uint256", indexed: true },
-      { name: "subscriber", type: "address", indexed: true },
-      { name: "amount", type: "uint256", indexed: false },
-      { name: "nextPaymentTime", type: "uint256", indexed: false },
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "nextPaymentTime",
+        "type": "uint256"
+      }
     ],
-    anonymous: false,
+    "name": "SubscriptionCreated",
+    "type": "event"
   },
   {
-    type: "event",
-    name: "SubscriptionRenewed",
-    inputs: [
-      { name: "subscriptionId", type: "uint256", indexed: true },
-      { name: "amount", type: "uint256", indexed: false },
-      { name: "nextPaymentTime", type: "uint256", indexed: false },
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "nextPaymentTime",
+        "type": "uint256"
+      }
     ],
-    anonymous: false,
+    "name": "SubscriptionRenewed",
+    "type": "event"
   },
   {
-    type: "event",
-    name: "SubscriptionCanceled",
-    inputs: [
-      { name: "subscriptionId", type: "uint256", indexed: true },
-      { name: "subscriber", type: "address", indexed: true },
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      }
     ],
-    anonymous: false,
+    "name": "cancelSubscription",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    type: "event",
-    name: "EarningsWithdrawn",
-    inputs: [
-      { name: "creator", type: "address", indexed: true },
-      { name: "amount", type: "uint256", indexed: false },
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "interval",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      }
     ],
-    anonymous: false,
+    "name": "createPlan",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      }
+    ],
+    "name": "getCreatorEarnings",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      }
+    ],
+    "name": "getCreatorPlans",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getPlan",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "creator",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "interval",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct BotStream.Plan",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getPlanCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      }
+    ],
+    "name": "getSubscriberSubscriptions",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getSubscription",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "planId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "subscriber",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "startedAt",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "nextPaymentTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "paymentsMade",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "active",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct BotStream.Subscription",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getSubscriptionCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getSubscriptionStatus",
+    "outputs": [
+      {
+        "internalType": "enum BotStream.SubscriptionStatus",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "isSubscriptionDue",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "nextPlanId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "nextSubscriptionId",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "pendingEarnings",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "plans",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "interval",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "createdAt",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "renewSubscription",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      }
+    ],
+    "name": "setPlanStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      }
+    ],
+    "name": "subscribe",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "subscriptionId",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "subscriptions",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "planId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "subscriber",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "startedAt",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "nextPaymentTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "paymentsMade",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "withdrawEarnings",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ] as const;

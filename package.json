@@ -10,6 +10,7 @@
     "compile": "hardhat compile",
     "test:contracts": "hardhat test",
     "deploy:botchain": "hardhat run scripts/deploy.ts --network botchain",
+    "deploy:mainnet": "hardhat run scripts/deploy.ts --network botchain_mainnet",
     "deploy:local": "hardhat run scripts/deploy.ts --network localhost"
   },
   "dependencies": {

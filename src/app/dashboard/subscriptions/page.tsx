@@ -277,7 +277,7 @@ export default function SubscriberDashboardPage() {
             <h1 className="text-2xl sm:text-3xl font-black text-white">Subscriber Dashboard</h1>
           </div>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Manage your decentralized recurring subscriptions on Botchain Testnet.
+            Manage your decentralized recurring subscriptions on BotChain Mainnet.
           </p>
         </div>
 
@@ -394,7 +394,7 @@ export default function SubscriberDashboardPage() {
           </h3>
           <p className="text-xs text-slate-400 mb-6 leading-relaxed">
             {subscriptions.length === 0
-              ? "You have not subscribed to any on-chain plans on Botchain Testnet yet."
+              ? "You have not subscribed to any on-chain plans on BotChain Mainnet yet."
               : "All subscriptions in other categories are up to date."}
           </p>
           <Link

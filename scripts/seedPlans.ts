@@ -91,7 +91,7 @@ async function main() {
   const newPlanCount = await botStream.getPlanCount();
   console.log("\n==========================================");
   console.log(`Seeding complete! Total on-chain plans: ${newPlanCount}`);
-  console.log(`View on BohrScan: https://scan.bohr.life/address/${contractAddress}`);
+  console.log(`View on BotChain Explorer: https://scan.botchain.ai/address/${contractAddress}`);
   console.log("==========================================");
 }
 

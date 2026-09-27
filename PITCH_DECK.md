@@ -2,7 +2,7 @@
 **The On-Chain Subscription Engine for Web3 Creators & SaaS**
 
 *Live Deck Link*: [https://github.com/liljhnxn/botstream/blob/main/PITCH_DECK.md](https://github.com/liljhnxn/botstream/blob/main/PITCH_DECK.md)  
-*Verified Contract*: [`0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b`](https://scan.bohr.life/address/0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b#code)  
+*Verified Contract*: [`0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac`](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code)  
 
 ---
 
@@ -56,7 +56,7 @@
 ---
 
 ## Slide 7: Live Traction & Verification
-* **Smart Contract**: Deployed & Verified on BohrScan Testnet ([`0x5d9Eb...7C7b`](https://scan.bohr.life/address/0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b#code))
+* **Smart Contract**: Deployed & Verified on BotChain Mainnet ([`0xEbB77...50ac`](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code))
 * **Full-Stack dApp**: Next.js 14, Wagmi v2, Viem, and Tailwind CSS.
 * **Features Live**: Plan creator, marketplace, subscriber management dashboard, real-time activity explorer.
 
@@ -71,5 +71,5 @@
 
 ## Slide 9: Team & Links
 * **Repository**: [https://github.com/liljhnxn/botstream](https://github.com/liljhnxn/botstream)
-* **Contract Explorer**: [BohrScan Verification](https://scan.bohr.life/address/0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b#code)
+* **Contract Explorer**: [BotChain Explorer Verification](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code)
 * **Whitepaper**: [View Whitepaper](https://github.com/liljhnxn/botstream/blob/main/WHITEPAPER.md)

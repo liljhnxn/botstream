@@ -87,7 +87,7 @@ export default function PlanDetailPage() {
     return (
       <div className="max-w-md mx-auto py-16 text-center">
         <h2 className="text-xl font-bold text-white mb-2">Plan Not Found</h2>
-        <p className="text-xs text-slate-400 mb-6">Plan #{planId.toString()} does not exist on Botchain Testnet.</p>
+        <p className="text-xs text-slate-400 mb-6">Plan #{planId.toString()} does not exist on BotChain Mainnet.</p>
         <Link href="/plans" className="cyber-button-primary px-6 py-2.5 rounded-xl text-xs font-semibold">
           Return to Explore
         </Link>
@@ -223,11 +223,11 @@ export default function PlanDetailPage() {
               </div>
 
               <a
-                href={`https://scan.bohr.life/address/${plan.creator}`}
+                href={`https://scan.botchain.ai/address/${plan.creator}`}
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 rounded-xl text-slate-400 hover:text-cyan-400 hover:bg-white/5 transition-colors"
-                title="View Creator on BohrScan"
+                title="View Creator on BotChain Explorer"
               >
                 <ExternalLink className="w-4 h-4" />
               </a>
@@ -257,7 +257,7 @@ export default function PlanDetailPage() {
 
               <div className="flex items-center justify-between text-slate-400">
                 <span>Network</span>
-                <span className="font-mono text-cyan-400">Botchain (968)</span>
+                <span className="font-mono text-cyan-400">BotChain (677)</span>
               </div>
 
               <div className="flex items-center justify-between text-slate-400">

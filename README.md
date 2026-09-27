@@ -1,20 +1,20 @@
 # BotStream — On-Chain Subscription Protocol
 
 > **"Subscribe. Renew. On-Chain."**  
-> *Decentralized recurring subscriptions powered by Botchain Testnet.*
+> *Decentralized recurring subscriptions powered by BotChain Mainnet.*
 
 ---
 
 ## Overview
 
-**BotStream** is a production-grade Web3 subscription protocol deployed on **Botchain / Bohr Testnet (Chain ID 968)**. It enables decentralized creators, SaaS protocols, and Web3 services to create customizable subscription tiers priced in native **BOT** tokens, while empowering subscribers with full custody, transparent billing cycles, and frictionless one-click manual renewals.
+**BotStream** is a production-grade Web3 subscription protocol deployed on **BotChain Mainnet (Chain ID 677)**. It enables decentralized creators, SaaS protocols, and Web3 services to create customizable subscription tiers priced in native **BOT** tokens, while empowering subscribers with full custody, transparent billing cycles, and frictionless one-click manual renewals.
 
 ### Core Philosophy: Honest Non-Custodial Billing
 Because native blockchain currencies (such as ETH or BOT) cannot be silently withdrawn from a user's wallet without an explicit cryptographically-signed transaction, BotStream does not implement deceptive "fake auto-debits." 
 
 Instead:
 1. **Upfront Payment**: The user pays for their initial cycle when subscribing.
-2. **Deployed & Verified Contract**: [`0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b`](https://scan.bohr.life/address/0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b#code) (Verified on BohrScan)
+2. **Deployed & Verified Contract**: [`0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac`](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code) (Verified on BotChain Explorer)
 3. **Deterministic Cycles**: An on-chain timestamp (`nextPaymentTime`) tracks when the next period is due.
 4. **Explicit Renewal**: When due (`block.timestamp >= nextPaymentTime`), the subscriber confirms a renewal transaction in their wallet to extend access.
 5. **Fair Grace Period**: Late renewals calculate the new billing cycle starting from the moment of renewal (`block.timestamp + interval`), ensuring subscribers are never penalized.
@@ -32,8 +32,8 @@ Instead:
                           [Sends Native BOT]  |   [Sends Native BOT]
                                               v
 +------------------+             +------------+-----------+             +-----------------+
-|  Creator Wallet  | <---------- |     BotStream.sol      | ----------> | BohrScan / RPC  |
-+------------------+   withdraw  |   (ReentrancyGuard)    |    Events   |  (Chain ID 968) |
+|  Creator Wallet  | <---------- |     BotStream.sol      | ----------> | BotChain / RPC  |
++------------------+   withdraw  |   (nonReentrant)       |    Events   |  (Chain ID 677) |
                        Earnings  +------------+-----------+             +-----------------+
                                               |
                                               | Accounting:
@@ -58,7 +58,7 @@ Instead:
 | **Styling** | Tailwind CSS & Vanilla CSS | Cyberpunk Web3 theme, glassmorphism, glowing micro-animations |
 | **Web3 Client** | Wagmi v2 & Viem | Reactive contract reads, writes, and wallet connectors |
 | **Icons** | Lucide React | Modern minimalist icons |
-| **Network** | Botchain / Bohr Testnet | High-speed, EVM-compatible decentralized infrastructure |
+| **Network** | BotChain Mainnet | High-speed, EVM-compatible decentralized infrastructure |
 
 ---
 
@@ -115,14 +115,14 @@ This isolates creator funds, eliminates systemic pool risks, prevents reentrancy
 
 ---
 
-## Botchain Testnet Configuration
+## BotChain Mainnet Configuration
 
 | Parameter | Value |
 | :--- | :--- |
-| **Network Name** | Botchain / Bohr Testnet |
-| **Chain ID** | `968` |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Block Explorer** | `https://scan.bohr.life` |
+| **Network Name** | BotChain Mainnet |
+| **Chain ID** | `677` |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Block Explorer** | `https://scan.botchain.ai` |
 | **Native Token** | BOT |
 | **Decimals** | 18 |
 
@@ -144,10 +144,10 @@ cp .env.example .env.local
 ```
 Fill in the following:
 ```env
-NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=968
-NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.bohr.life
-NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.bohr.life
-NEXT_PUBLIC_BOTSTREAM_CONTRACT_ADDRESS=0x5d9Eb95f4Eaaaa2b7d6a3b06D463644ae4E47C7b
+NEXT_PUBLIC_BOTCHAIN_CHAIN_ID=677
+NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
+NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL=https://scan.botchain.ai
+NEXT_PUBLIC_BOTSTREAM_CONTRACT_ADDRESS=0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac
 
 # For deploying smart contracts
 BOTCHAIN_PRIVATE_KEY=<YOUR_PRIVATE_KEY>
@@ -164,7 +164,8 @@ BOTCHAIN_PRIVATE_KEY=<YOUR_PRIVATE_KEY>
 | `npm run start` | Runs the production Next.js server |
 | `npm run compile` | Compiles the Solidity contracts via Hardhat |
 | `npm run test:contracts` | Executes the complete 22-test Hardhat test suite |
-| `npm run deploy:botchain` | Deploys `BotStream.sol` to Botchain Testnet and syncs ABI |
+| `npm run deploy:botchain` | Deploys `BotStream.sol` to BotChain Mainnet and syncs ABI |
+| `npm run deploy:mainnet` | Deploys `BotStream.sol` to BotChain Mainnet |
 | `npm run deploy:local` | Deploys `BotStream.sol` to a local Hardhat node |
 
 ---
@@ -224,21 +225,21 @@ npm run test:contracts
 
 ---
 
-## Deployment to Botchain Testnet
+## Deployment to BotChain Mainnet
 
-1. Ensure your deployer wallet holds native BOT on Botchain Testnet (Chain ID 968).
+1. Ensure your deployer wallet holds native BOT on BotChain Mainnet (Chain ID 677).
 2. Set your private key in `.env.local`:
    ```env
    BOTCHAIN_PRIVATE_KEY=0x...
    ```
 3. Run the automated deployment script:
    ```bash
-   npm run deploy:botchain
+   npm run deploy:mainnet
    ```
 4. The deployment script will:
    - Compile the contracts.
-   - Deploy `BotStream` to Botchain Testnet.
-   - Print the deployed address and BohrScan explorer URL.
+   - Deploy `BotStream` to BotChain Mainnet.
+   - Print the deployed address and BotChain explorer URL.
    - Automatically write the address and full ABI directly to `src/config/contracts.ts`.
 
 ---

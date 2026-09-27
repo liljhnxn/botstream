@@ -76,7 +76,7 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700/60 text-xs font-mono text-slate-300">
               <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span>Botchain Testnet (968)</span>
+              <span>BotChain Mainnet (677)</span>
             </div>
             <WalletButton />
           </div>
@@ -99,7 +99,7 @@ export function Navbar() {
         <div className="sm:hidden glass-dropdown border-b border-white/10 px-4 pt-2 pb-6 space-y-2 animate-in slide-in-from-top duration-200">
           <div className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-slate-300 mb-3">
             <div className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span>Botchain Testnet (Chain ID 968)</span>
+            <span>BotChain Mainnet (Chain ID 677)</span>
           </div>
 
           {navLinks.map((link) => {
