@@ -37,3 +37,10 @@ next-env.d.ts
 /cache
 /artifacts
 /typechain-types
+
+# Local interaction and wallet scripts
+scripts/*.mjs
+scripts/check*.js
+scripts/check*.ts
+scripts/query*.js
+scripts/find*.mjs
