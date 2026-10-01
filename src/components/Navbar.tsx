@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { WalletButton } from "./WalletButton";
-import { Zap, Compass, PlusCircle, UserCheck, ShieldCheck, Activity, Menu, X, CheckCircle, ExternalLink } from "lucide-react";
+import { Zap, Compass, PlusCircle, UserCheck, ShieldCheck, Activity, Menu, X, CheckCircle, ExternalLink, Globe } from "lucide-react";
 import { BOTSTREAM_CONTRACT_ADDRESS } from "@/config/contracts";
 
 export function Navbar() {
@@ -73,8 +73,20 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right Area: Explorer Link, Network Badge & Wallet */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          {/* Right Area: Official Website, Explorer Link, Network Badge & Wallet */}
+          <div className="hidden sm:flex items-center gap-2">
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-cyan-950/70 hover:bg-cyan-900/80 border border-cyan-500/40 text-xs font-mono text-cyan-300 hover:text-cyan-200 transition-colors shadow-sm shadow-cyan-500/10"
+              title="Visit BotChain Official Website (botchain.ai)"
+            >
+              <Globe className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+              <span>botchain.ai</span>
+              <ExternalLink className="w-3 h-3 text-cyan-400/80 shrink-0" />
+            </a>
+
             <a
               href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
               target="_blank"
@@ -87,10 +99,16 @@ export function Navbar() {
               <ExternalLink className="w-3 h-3 text-emerald-400 opacity-80 shrink-0" />
             </a>
 
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700/60 text-xs font-mono text-slate-300">
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 text-xs font-mono text-slate-300 hover:text-cyan-300 transition-colors"
+              title="BotChain Mainnet (Chain ID 677)"
+            >
               <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
               <span>Mainnet (677)</span>
-            </div>
+            </a>
             <WalletButton />
           </div>
 
@@ -111,6 +129,19 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="sm:hidden glass-dropdown border-b border-white/10 px-4 pt-2 pb-6 space-y-2 animate-in slide-in-from-top duration-200">
           <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between px-3 py-2 rounded-lg bg-cyan-950/60 hover:bg-cyan-900/60 border border-cyan-500/40 text-xs font-mono text-cyan-300 mb-2 transition-colors"
+          >
+            <span className="flex items-center gap-2">
+              <Globe className="w-3.5 h-3.5 text-cyan-400" />
+              <span>BotChain Official (botchain.ai)</span>
+            </span>
+            <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+          </a>
+
+          <a
             href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
             target="_blank"
             rel="noreferrer"
@@ -123,10 +154,18 @@ export function Navbar() {
             <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
           </a>
 
-          <div className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-slate-300 mb-3">
-            <div className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span>BotChain Mainnet (Chain ID 677)</span>
-          </div>
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs font-mono text-slate-300 mb-3"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-cyan-400" />
+              <span>BotChain Mainnet (Chain ID 677)</span>
+            </div>
+            <ExternalLink className="w-3 h-3 text-slate-400" />
+          </a>
 
           {navLinks.map((link) => {
             const Icon = link.icon;

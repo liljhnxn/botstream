@@ -20,6 +20,7 @@ import {
   Check,
   ExternalLink,
   CheckCircle,
+  Globe,
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -94,9 +95,27 @@ export default function LandingPage() {
         {/* Glow ambient background elements */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-purple-600/15 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-semibold text-cyan-300 mb-8 backdrop-blur-md shadow-lg shadow-cyan-500/10">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Decentralized Subscriptions Powered by BotChain Mainnet</span>
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 hover:bg-cyan-900/70 border border-cyan-500/30 hover:border-cyan-400 text-xs font-semibold text-cyan-300 transition-all backdrop-blur-md shadow-lg shadow-cyan-500/10 group"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+            <span>Decentralized Subscriptions Powered by BotChain Mainnet</span>
+            <ExternalLink className="w-3 h-3 text-cyan-400/80" />
+          </a>
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/50 text-xs font-mono text-slate-300 hover:text-cyan-300 transition-colors backdrop-blur-md"
+          >
+            <Globe className="w-3.5 h-3.5 text-cyan-400" />
+            <span>botchain.ai</span>
+            <ExternalLink className="w-3 h-3 text-cyan-400/80" />
+          </a>
         </div>
 
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
@@ -137,8 +156,20 @@ export default function LandingPage() {
           </Link>
         </div>
 
-        {/* Explorer Link Badge */}
-        <div className="mt-6 flex justify-center">
+        {/* Explorer & Official Links Badge */}
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-950/70 hover:bg-cyan-900/80 border border-cyan-500/40 text-xs font-mono text-cyan-300 transition-all shadow-md shadow-cyan-500/10 hover:shadow-cyan-500/20 group"
+            title="Visit BotChain Official Website"
+          >
+            <Globe className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+            <span>Official Network: <strong className="text-white">botchain.ai</strong></span>
+            <ExternalLink className="w-3 h-3 text-cyan-400/80" />
+          </a>
+
           <a
             href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
             target="_blank"
@@ -302,6 +333,16 @@ export default function LandingPage() {
             BotStream is built on BotChain Mainnet (Chain ID 677) using EVM Solidity ^0.8.24.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="https://botchain.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-950 text-xs font-mono text-cyan-300 hover:text-cyan-200 border border-cyan-700 hover:border-cyan-500 transition-colors"
+            >
+              <Globe className="w-3 h-3" />
+              <span>Website: botchain.ai</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
             <span className="px-3 py-1.5 rounded-lg bg-slate-900 text-xs font-mono text-cyan-300 border border-slate-700">
               RPC: https://rpc.botchain.ai
             </span>

@@ -2,6 +2,7 @@
 **The On-Chain Subscription Engine for Web3 Creators & SaaS**
 
 *Live Deck Link*: [https://github.com/liljhnxn/botstream/blob/main/PITCH_DECK.md](https://github.com/liljhnxn/botstream/blob/main/PITCH_DECK.md)  
+*Official Website*: [https://botchain.ai](https://botchain.ai)  
 *Verified Contract*: [`0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac`](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code)  
 
 ---

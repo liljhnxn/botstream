@@ -17,13 +17,30 @@ export function Footer() {
               <span className="font-bold text-lg text-white">BotStream</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Decentralized recurring subscription protocol powered by BotChain Mainnet. Built for creators and Web3 services.
+              Decentralized recurring subscription protocol powered by{" "}
+              <a
+                href="https://botchain.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="text-cyan-400 hover:underline inline-flex items-center gap-0.5"
+              >
+                BotChain Mainnet
+                <ExternalLink className="w-2.5 h-2.5 ml-0.5" />
+              </a>
+              . Built for creators and Web3 services.
             </p>
             <div className="pt-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 text-[11px] font-mono">
+              <a
+                href="https://botchain.ai"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-950/80 hover:bg-cyan-900/80 text-cyan-400 border border-cyan-800/60 text-[11px] font-mono transition-colors"
+                title="Visit BotChain Official Website"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                Chain ID: 677 (BotChain Mainnet)
-              </span>
+                Chain ID: 677 (botchain.ai)
+                <ExternalLink className="w-2.5 h-2.5 ml-0.5 opacity-70" />
+              </a>
             </div>
           </div>
 
@@ -65,12 +82,24 @@ export function Footer() {
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <a
+                  href="https://botchain.ai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 font-medium transition-colors"
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>BotChain Official (botchain.ai)</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://scan.botchain.ai"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-1 hover:text-cyan-400 transition-colors"
                 >
-                  <span>BotChain Explorer</span>
+                  <span>BotChain Explorer (scan.botchain.ai)</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>

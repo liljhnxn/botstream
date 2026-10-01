@@ -7,7 +7,7 @@ import { BOTSTREAM_CONTRACT_ADDRESS, BOTSTREAM_ABI } from "@/config/contracts";
 import { Plan } from "@/types";
 import { PlanCard } from "@/components/PlanCard";
 import { TransactionModal, TxStep } from "@/components/TransactionModal";
-import { Search, Filter, PlusCircle, Compass, RefreshCw, ExternalLink, CheckCircle } from "lucide-react";
+import { Search, Filter, PlusCircle, Compass, RefreshCw, ExternalLink, CheckCircle, Globe } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 
 export default function ExplorePlansPage() {
@@ -154,6 +154,18 @@ export default function ExplorePlansPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-xs font-mono text-cyan-300 hover:bg-cyan-900/60 transition-colors"
+            title="Visit BotChain Official Website"
+          >
+            <Globe className="w-3.5 h-3.5 text-cyan-400" />
+            <span>botchain.ai</span>
+            <ExternalLink className="w-3 h-3 text-cyan-400" />
+          </a>
+
           <a
             href={`https://scan.botchain.ai/address/${BOTSTREAM_CONTRACT_ADDRESS}#code`}
             target="_blank"

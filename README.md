@@ -122,7 +122,8 @@ This isolates creator funds, eliminates systemic pool risks, prevents reentrancy
 | **Network Name** | BotChain Mainnet |
 | **Chain ID** | `677` |
 | **RPC Endpoint** | `https://rpc.botchain.ai` |
-| **Block Explorer** | `https://scan.botchain.ai` |
+| **Official Website** | [https://botchain.ai](https://botchain.ai) |
+| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
 | **Native Token** | BOT |
 | **Decimals** | 18 |
 

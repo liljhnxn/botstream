@@ -3,6 +3,7 @@
 
 *Author*: BotStream Core Contributors  
 *Target Network*: BotChain Mainnet (Chain ID 677)  
+*Official Website*: [https://botchain.ai](https://botchain.ai)  
 *Contract Address*: [`0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac`](https://scan.botchain.ai/address/0xEbB77bE1F44526bE1A4C295Ee21BD09DBAcC50ac#code)  
 *Repository*: [https://github.com/liljhnxn/botstream](https://github.com/liljhnxn/botstream)  
 *Live Specification*: [https://github.com/liljhnxn/botstream/blob/main/WHITEPAPER.md](https://github.com/liljhnxn/botstream/blob/main/WHITEPAPER.md)
